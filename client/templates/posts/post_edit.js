@@ -25,7 +25,7 @@ Template.postEdit.events({
 
   'click .delete': function(e) {
     e.preventDefault();
-
+    console.log("Console log with Vim");
     if (confirm("Delete this post?")) {
       var currentPostId = this._id;
       Posts.remove(currentPostId);
