@@ -24,7 +24,7 @@ Template.postEdit.events({
 
     var errors = validatePost(postProperties);
     if (errors.title || errors.url) return Session.set('postEditErrors', errors); 
-    
+
     var errorUpdate = function(error) {
       if (error) {
         // display the error to the user
@@ -34,9 +34,14 @@ Template.postEdit.events({
       }
     };
 
-    Posts.update(currentPostId, {
-      $set: postProperties
-    }, errorUpdate(error));
+    Posts.update(currentPostId, {$set: postProperties}, function(error) {
+      if (error) {
+        //display the error to the user
+        Errors.throw(error.reason);
+      } else {
+        Router.go('postPage', {_id: currentPostId});
+      }
+    });
   },
 
   'click .delete': function(e) {
@@ -47,5 +52,5 @@ Template.postEdit.events({
       Posts.remove(currentPostId);
       Router.go('postsList');
     }
-  },
+  }
 });
