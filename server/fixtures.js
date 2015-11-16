@@ -25,8 +25,8 @@ if (Posts.find().count() === 0) {
 
   Comments.insert({
     postId: telescopeId,
-    userId: sasha._id,
-    author: sasha.profile.name,
+    userId: tom._id,
+    author: tom.profile.name,
     submitted: new Date(now - 5 * 3600 * 1000),
     body: 'Interesting project Sasha, can I get involved?',
   });
@@ -44,7 +44,7 @@ if (Posts.find().count() === 0) {
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://meteor.com',
-    submitted: new Date(now - 10 * 3600 * 1000)
+    submitted: new Date(now - 10 * 3600 * 1000),
   });
 
   Posts.insert({
@@ -52,6 +52,6 @@ if (Posts.find().count() === 0) {
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://themeteorbook.com',
-    submitted: new Date(now - 12 * 3600 * 1000)
+    submitted: new Date(now - 12 * 3600 * 1000),
   });
 }
