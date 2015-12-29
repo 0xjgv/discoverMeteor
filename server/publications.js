@@ -8,7 +8,7 @@ Meteor.publish('posts', function(options) {
 
 Meteor.publish('singlePost', function(id) {
   check(id, String)
-  return Post.find(id);
+  return Posts.find(id);
 });
 
 Meteor.publish('comments', function(postId) {

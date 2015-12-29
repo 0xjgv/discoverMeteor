@@ -10,3 +10,10 @@ Template.postItem.helpers({
   },
 
 });
+
+Template.postItem.events({
+  'click .upvote': function(e){
+    Meteor.call('upvote', this._id);
+    return false; // prevent the button from reloading the page
+  }
+});
