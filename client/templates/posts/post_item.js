@@ -8,11 +8,19 @@ Template.postItem.helpers({
     a.href = this.url;
     return a.hostname;
   },
+  upvotedClass: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.upvoters, userId)) {
+      return 'btn-primary upvotable';
+    } else {
+      return 'disabled';
+    }
+  },
 
 });
 
 Template.postItem.events({
-  'click .upvote': function(e){
+  'click .upvotable': function(e){
     Meteor.call('upvote', this._id);
     return false; // prevent the button from reloading the page
   }
